@@ -1,0 +1,38 @@
+{
+    "name": "cheppers/asset-jar",
+    "description": "Provides a very simple, shared, in-memory data storage.",
+    "type": "library",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "bin-dir": "bin"
+    },
+    "require-dev": {
+        "phpunit/php-code-coverage": "^4.0",
+        "phpunit/phpunit": "^5.4",
+        "squizlabs/php_codesniffer": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cheppers\\AssetJar\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cheppers\\AssetJar\\Test\\": "src-dev/Test/"
+        }
+    },
+    "scripts": {
+        "test": [
+          "@test-phpunit"
+        ],
+        "test-phpunit": "phpunit --colors=always",
+        "lint": [
+            "@lint-phpcs",
+            "@lint-composer-lock"
+        ],
+        "lint-phpcs": "phpcs --standard=PSR2 src/ src-dev/",
+        "lint-composer-lock": "composer validate"
+    }
+}
