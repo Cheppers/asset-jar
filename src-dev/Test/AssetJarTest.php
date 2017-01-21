@@ -4,15 +4,9 @@ namespace Cheppers\AssetJar\Test;
 
 use Cheppers\AssetJar\AssetJar;
 
-/**
- * Class JarTest.
- *
- * @package Cheppers\Test\Jar
- */
 class AssetJarTest extends \PHPUnit_Framework_TestCase
 {
-
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $asset_jar = new AssetJar();
         static::assertEquals([], $asset_jar->getValue([]));
@@ -24,10 +18,7 @@ class AssetJarTest extends \PHPUnit_Framework_TestCase
         static::assertEquals(['foo' => 'bar'], $asset_jar->getValue([]));
     }
 
-    /**
-     * @return array
-     */
-    public function casesGetValue()
+    public function casesGetValue(): array
     {
         return [
             [
@@ -66,14 +57,10 @@ class AssetJarTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider casesGetValue
-     *
-     * @param array $parents
-     * @param mixed $expected_value
-     * @param bool $expected_key_exists
      */
-    public function testGetValue(array $parents, $expected_value, $expected_key_exists)
+    public function testGetValue(array $parents, $expectedValue, bool $expectedKeyExists): void
     {
-        $asset_jar = new AssetJar([
+        $assetJar = new AssetJar([
             'a' => 'b',
             'c' => [
                 'd' => [
@@ -82,14 +69,11 @@ class AssetJarTest extends \PHPUnit_Framework_TestCase
                 ],
             ],
         ]);
-        static::assertEquals($expected_value, $asset_jar->getValue($parents, $key_exists));
-        static::assertEquals($expected_key_exists, $key_exists);
+        static::assertEquals($expectedValue, $assetJar->getValue($parents, $key_exists));
+        static::assertEquals($expectedKeyExists, $key_exists);
     }
 
-    /**
-     * @return array
-     */
-    public function casesSetValue()
+    public function casesSetValue(): array
     {
         return [
             [
@@ -109,16 +93,10 @@ class AssetJarTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider casesSetValue
-     *
-     *
-     * @param mixed $expected
-     * @param array $parents
-     * @param mixed$value
-     * @param bool $force
      */
-    public function testSetValue($expected, array $parents, $value, $force)
+    public function testSetValue($expected, array $parents, $value, bool $force): void
     {
-        $asset_jar = new AssetJar([
+        $assetJar = new AssetJar([
             'a' => 'b',
             'c' => [
                 'd' => [
@@ -127,13 +105,13 @@ class AssetJarTest extends \PHPUnit_Framework_TestCase
                 ],
             ],
         ]);
-        $asset_jar->setValue($parents, $value, $force);
-        static::assertEquals($expected, $asset_jar->getValue($parents));
+        $assetJar->setValue($parents, $value, $force);
+        static::assertEquals($expected, $assetJar->getValue($parents));
     }
 
-    public function testUnsetValue()
+    public function testUnsetValue(): void
     {
-        $asset_jar = new AssetJar([
+        $assetJar = new AssetJar([
             'a' => 'b',
             'c' => [
                 'd' => [
@@ -142,16 +120,16 @@ class AssetJarTest extends \PHPUnit_Framework_TestCase
                 ],
             ],
         ]);
-        $asset_jar->unsetValue(['c', 'd'], $key_exists);
+        $assetJar->unsetValue(['c', 'd'], $key_exists);
         static::assertTrue($key_exists);
 
-        $asset_jar->unsetValue(['c', 'd'], $key_exists);
+        $assetJar->unsetValue(['c', 'd'], $key_exists);
         static::assertFalse($key_exists);
     }
 
-    public function testKeyExists()
+    public function testKeyExists(): void
     {
-        $asset_jar = new AssetJar([
+        $assetJar = new AssetJar([
             'a' => 'b',
             'c' => [
                 'd' => [
@@ -160,7 +138,7 @@ class AssetJarTest extends \PHPUnit_Framework_TestCase
                 ],
             ],
         ]);
-        static::assertTrue($asset_jar->keyExists(['c', 'd']));
-        static::assertFalse($asset_jar->keyExists(['c', 'd', 'h']));
+        static::assertTrue($assetJar->keyExists(['c', 'd']));
+        static::assertFalse($assetJar->keyExists(['c', 'd', 'h']));
     }
 }

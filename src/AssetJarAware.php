@@ -2,17 +2,10 @@
 
 namespace Cheppers\AssetJar;
 
-/**
- * Trait AssetJarAware.
- *
- * @package Cheppers\AssetJar
- */
 trait AssetJarAware
 {
 
     /**
-     * AssetJar.
-     *
      * @var \Cheppers\AssetJar\AssetJarInterface
      */
     protected $assetJar = null;
@@ -24,79 +17,54 @@ trait AssetJarAware
      */
     protected $assetJarMapping = [];
 
-    /**
-     * @see \Cheppers\AssetJar\AssetJarAwareInterface::hasAssetJar()
-     *
-     * @return bool
-     */
-    public function hasAssetJar()
+    public function hasAssetJar(): bool
     {
         return !empty($this->assetJar);
     }
 
-    /**
-     * @see \Cheppers\AssetJar\AssetJarAwareInterface::getAssetJar()
-     *
-     * @return \Cheppers\AssetJar\AssetJarInterface
-     */
-    public function getAssetJar()
+    public function getAssetJar(): ?AssetJarInterface
     {
         return $this->assetJar;
     }
 
     /**
-     * @see \Cheppers\AssetJar\AssetJarAwareInterface::setAssetJar()
-     *
-     * @param \Cheppers\AssetJar\AssetJarInterface $asset_jar
-     *
      * @return $this
      */
-    public function setAssetJar(AssetJarInterface $asset_jar)
+    public function setAssetJar(?AssetJarInterface $assetJar)
     {
-        $this->assetJar = $asset_jar;
+        $this->assetJar = $assetJar;
 
         return $this;
     }
 
     /**
-     * @see \Cheppers\AssetJar\AssetJarAwareInterface::getAssetJarValue()
-     *
-     * @param string $name
-     * @param null $key_exists
-     *
      * @return mixed|null
      */
-    public function &getAssetJarValue($name, &$key_exists = null)
+    public function &getAssetJarValue(string $name, &$keyExists = null)
     {
         $null = null;
         if (!$this->hasAssetJar()) {
-            $key_exists = false;
+            $keyExists = false;
 
             return $null;
         }
 
         $parents = $this->getAssetJarMap($name);
         if ($parents === null) {
-            $key_exists = false;
+            $keyExists = false;
 
             return $null;
         }
 
         return $this
             ->getAssetJar()
-            ->getValue($parents, $key_exists);
+            ->getValue($parents, $keyExists);
     }
 
     /**
-     * @see \Cheppers\AssetJar\AssetJarAwareInterface::setAssetJarValue()
-     *
-     * @param string $name
-     * @param mixed $value
-     * @param bool $force
-     *
      * @return $this
      */
-    public function setAssetJarValue($name, $value, $force = false)
+    public function setAssetJarValue(string $name, $value, bool $force = false)
     {
         if (!$this->hasAssetJar()) {
             throw new \RuntimeException('@todo', 1);
@@ -109,21 +77,12 @@ trait AssetJarAware
         return $this;
     }
 
-    /**
-     * @see \Cheppers\AssetJar\AssetJarAwareInterface::getAssetJarMapping()
-     *
-     * @return array
-     */
-    public function getAssetJarMapping()
+    public function getAssetJarMapping(): array
     {
         return $this->assetJarMapping;
     }
 
     /**
-     * @see \Cheppers\AssetJar\AssetJarAwareInterface::setAssetJarMapping()
-     *
-     * @param array $mapping
-     *
      * @return $this
      */
     public function setAssetJarMapping(array $mapping)
@@ -134,27 +93,17 @@ trait AssetJarAware
     }
 
     /**
-     * @see \Cheppers\AssetJar\AssetJarAwareInterface::getAssetJarMap()
-     *
-     * @param string $name
-     *
      * @return string[]|null
-     *   Parents.
      */
-    public function getAssetJarMap($name)
+    public function getAssetJarMap(string $name): ?array
     {
         return isset($this->assetJarMapping[$name]) ? $this->assetJarMapping[$name] : null;
     }
 
     /**
-     * @see \Cheppers\AssetJar\AssetJarAwareInterface::setAssetJarMap()
-     *
-     * @param string $name
-     * @param string[] $parents
-     *
      * @return $this
      */
-    public function setAssetJarMap($name, array $parents)
+    public function setAssetJarMap(string $name, array $parents)
     {
         $this->assetJarMapping[$name] = $parents;
 
