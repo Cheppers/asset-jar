@@ -2,38 +2,22 @@
 
 namespace Cheppers\AssetJar;
 
-/**
- * Interface AssetJarAwareInterface.
- *
- * @package Cheppers\AssetJar
- */
 interface AssetJarAwareInterface
 {
 
-    /**
-     * @return bool
-     */
-    public function hasAssetJar();
+    public function hasAssetJar(): bool;
+
+    public function getAssetJar(): AssetJarInterface;
 
     /**
-     * @return \Cheppers\AssetJar\AssetJarInterface
-     */
-    public function getAssetJar();
-
-    /**
-     * @param \Cheppers\AssetJar\AssetJarInterface $asset_jar
-     *
      * @return $this
      */
-    public function setAssetJar(AssetJarInterface $asset_jar);
+    public function setAssetJar(AssetJarInterface $assetJar);
 
     /**
-     * @param string $name
-     * @param null $key_exists
-     *
      * @return mixed
      */
-    public function &getAssetJarValue($name, &$key_exists = null);
+    public function &getAssetJarValue(string $name, &$keyExists = null);
 
     /**
      * Set a value in the assetJar.
@@ -50,16 +34,11 @@ interface AssetJarAwareInterface
      *
      * @return $this
      */
-    public function setAssetJarValue($name, $value, $force = false);
+    public function setAssetJarValue(string $name, $value, bool $force = false);
+
+    public function getAssetJarMapping(): array;
 
     /**
-     * @return array
-     */
-    public function getAssetJarMapping();
-
-    /**
-     * @param array $mapping
-     *
      * @return $this
      */
     public function setAssetJarMapping(array $mapping);

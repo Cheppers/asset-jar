@@ -52,7 +52,7 @@ interface AssetJarInterface
      *
      * @param array $parents
      *   An array of parent keys of the value, starting with the outermost key.
-     * @param bool $key_exists
+     * @param bool $keyExists
      *   (optional) If given, an already defined variable that is altered by
      *   reference.
      *
@@ -66,7 +66,7 @@ interface AssetJarInterface
      * @see NestedArray::setValue()
      * @see NestedArray::unsetValue()
      */
-    public function &getValue(array $parents, &$key_exists = null);
+    public function &getValue(array $parents, &$keyExists = null);
 
     /**
      * Sets a value in a nested array with variable depth.
@@ -131,7 +131,7 @@ interface AssetJarInterface
      * @see NestedArray::unsetValue()
      * @see NestedArray::getValue()
      */
-    public function setValue(array $parents, $value, $force = false);
+    public function setValue(array $parents, $value, bool $force = false);
 
     /**
      * Unsets a value in a nested array with variable depth.
@@ -184,7 +184,7 @@ interface AssetJarInterface
      * @param array $parents
      *   An array of parent keys, starting with the outermost key and including
      *   the key to be unset.
-     * @param bool $key_existed
+     * @param bool $keyExists
      *   (optional) If given, an already defined variable that is altered by
      *   reference.
      *
@@ -193,7 +193,7 @@ interface AssetJarInterface
      * @see NestedArray::setValue()
      * @see NestedArray::getValue()
      */
-    public function unsetValue(array $parents, &$key_existed = null);
+    public function unsetValue(array $parents, &$keyExists = null);
 
     /**
      * Determines whether a nested array contains the requested keys.
@@ -222,5 +222,5 @@ interface AssetJarInterface
      *
      * @see NestedArray::getValue()
      */
-    public function keyExists(array $parents);
+    public function keyExists(array $parents): bool;
 }
