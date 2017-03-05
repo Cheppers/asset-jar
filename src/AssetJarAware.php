@@ -19,7 +19,7 @@ trait AssetJarAware
 
     public function hasAssetJar(): bool
     {
-        return !empty($this->assetJar);
+        return isset($this->assetJar);
     }
 
     public function getAssetJar(): ?AssetJarInterface
@@ -92,9 +92,6 @@ trait AssetJarAware
         return $this;
     }
 
-    /**
-     * @return string[]|null
-     */
     public function getAssetJarMap(string $name): ?array
     {
         return isset($this->assetJarMapping[$name]) ? $this->assetJarMapping[$name] : null;
@@ -103,9 +100,13 @@ trait AssetJarAware
     /**
      * @return $this
      */
-    public function setAssetJarMap(string $name, array $parents)
+    public function setAssetJarMap(string $name, ?array $parents)
     {
-        $this->assetJarMapping[$name] = $parents;
+        if ($parents === null) {
+            unset($this->assetJarMapping[$name]);
+        } else {
+            $this->assetJarMapping[$name] = $parents;
+        }
 
         return $this;
     }

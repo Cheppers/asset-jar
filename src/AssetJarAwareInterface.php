@@ -7,12 +7,12 @@ interface AssetJarAwareInterface
 
     public function hasAssetJar(): bool;
 
-    public function getAssetJar(): AssetJarInterface;
+    public function getAssetJar(): ?AssetJarInterface;
 
     /**
      * @return $this
      */
-    public function setAssetJar(AssetJarInterface $assetJar);
+    public function setAssetJar(?AssetJarInterface $assetJar);
 
     /**
      * @return mixed
@@ -42,4 +42,11 @@ interface AssetJarAwareInterface
      * @return $this
      */
     public function setAssetJarMapping(array $mapping);
+
+    public function getAssetJarMap(string $name): ?array;
+
+    /**
+     * @return $this
+     */
+    public function setAssetJarMap(string $name, ?array $parents);
 }
