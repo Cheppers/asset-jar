@@ -1,6 +1,6 @@
 <?php
 
-namespace Cheppers\AssetJar;
+namespace Sweetchuck\AssetJar;
 
 /**
  * Borrowed from Drupal 8 \Drupal\Component\Utility\NestedArray.

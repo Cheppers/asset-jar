@@ -1,6 +1,6 @@
 <?php
 
-namespace Cheppers\AssetJar;
+namespace Sweetchuck\AssetJar;
 
 interface AssetJarAwareInterface
 {

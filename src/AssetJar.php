@@ -1,6 +1,6 @@
 <?php
 
-namespace Cheppers\AssetJar;
+namespace Sweetchuck\AssetJar;
 
 class AssetJar implements AssetJarInterface
 {

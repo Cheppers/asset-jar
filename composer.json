@@ -1,5 +1,5 @@
 {
-    "name": "cheppers/asset-jar",
+    "name": "sweetchuck/asset-jar",
     "description": "Provides a very simple, shared, in-memory data storage.",
     "type": "library",
     "license": "GPL-2.0+",
@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Cheppers\\AssetJar\\": "src/"
+            "Sweetchuck\\AssetJar\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Cheppers\\AssetJar\\Test\\": "src-dev/Test/"
+            "Sweetchuck\\AssetJar\\Test\\": "src-dev/Test/"
         }
     },
     "scripts": {
