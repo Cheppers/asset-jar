@@ -12,9 +12,10 @@
         "php": ">=7.1"
     },
     "require-dev": {
-        "phpunit/php-code-coverage": "^4.0",
-        "phpunit/phpunit": "^5.4",
-        "squizlabs/php_codesniffer": "^2.6"
+        "phpunit/php-code-coverage": "^5.2",
+        "phpunit/phpunit": "^6.2",
+        "squizlabs/php_codesniffer": "^3.0",
+        "sweetchuck/git-hooks": "^0.0.10"
     },
     "autoload": {
         "psr-4": {
@@ -27,6 +28,7 @@
         }
     },
     "scripts": {
+        "post-install-cmd": "\\Sweetchuck\\GitHooks\\Composer\\Scripts::deploy",
         "test": [
           "@test-phpunit"
         ],
@@ -35,7 +37,11 @@
             "@lint-phpcs",
             "@lint-composer-lock"
         ],
-        "lint-phpcs": "phpcs --standard=PSR2 src/ src-dev/",
-        "lint-composer-lock": "composer validate"
+        "lint-phpcs": "phpcs",
+        "lint-composer-lock": "composer validate",
+        "githook-pre-commit": [
+            "@lint",
+            "@test"
+        ]
     }
 }

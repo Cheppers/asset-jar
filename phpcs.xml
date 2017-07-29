@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ruleset name="AssetJar">
+  <file>src/</file>
+  <file>src-dev/</file>
+
+  <rule ref="PSR2" />
+
+</ruleset>
