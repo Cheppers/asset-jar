@@ -2,10 +2,11 @@
 
 namespace Sweetchuck\AssetJar\Test;
 
+use PHPUnit\Framework\TestCase;
 use Sweetchuck\AssetJar\AssetJar;
 use Sweetchuck\AssetJar\Test\Helper\AssetJarAwareTestHelper;
 
-class AssetJarAwareTest extends \PHPUnit_Framework_TestCase
+class AssetJarAwareTest extends TestCase
 {
 
     public function testHasAssetJar(): void

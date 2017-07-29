@@ -2,9 +2,10 @@
 
 namespace Sweetchuck\AssetJar\Test;
 
+use PHPUnit\Framework\TestCase;
 use Sweetchuck\AssetJar\AssetJar;
 
-class AssetJarTest extends \PHPUnit_Framework_TestCase
+class AssetJarTest extends TestCase
 {
     public function testConstruct(): void
     {
