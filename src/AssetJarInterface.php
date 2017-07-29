@@ -1,12 +1,7 @@
 <?php
 
-namespace Cheppers\AssetJar;
+namespace Sweetchuck\AssetJar;
 
-/**
- * Interface AssetJarInterface.
- *
- * @package Cheppers\AssetJar
- */
 interface AssetJarInterface
 {
 

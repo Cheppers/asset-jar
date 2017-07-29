@@ -1,14 +1,14 @@
 <?php
 
-namespace Cheppers\AssetJar;
+namespace Sweetchuck\AssetJar;
 
 trait AssetJarAware
 {
 
     /**
-     * @var \Cheppers\AssetJar\AssetJarInterface
+     * @var \Sweetchuck\AssetJar\AssetJarInterface
      */
-    protected $assetJar = null;
+    protected $assetJar;
 
     /**
      * Asset name and parents pairs.

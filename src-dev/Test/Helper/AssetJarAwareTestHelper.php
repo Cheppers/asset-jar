@@ -1,8 +1,8 @@
 <?php
 
-namespace Cheppers\AssetJar\Test\Helper;
+namespace Sweetchuck\AssetJar\Test\Helper;
 
-use Cheppers\AssetJar\AssetJarAware;
+use Sweetchuck\AssetJar\AssetJarAware;
 
 class AssetJarAwareTestHelper
 {

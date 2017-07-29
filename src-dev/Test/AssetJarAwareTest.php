@@ -1,9 +1,9 @@
 <?php
 
-namespace Cheppers\AssetJar\Test;
+namespace Sweetchuck\AssetJar\Test;
 
-use Cheppers\AssetJar\AssetJar;
-use Cheppers\AssetJar\Test\Helper\AssetJarAwareTestHelper;
+use Sweetchuck\AssetJar\AssetJar;
+use Sweetchuck\AssetJar\Test\Helper\AssetJarAwareTestHelper;
 
 class AssetJarAwareTest extends \PHPUnit_Framework_TestCase
 {
